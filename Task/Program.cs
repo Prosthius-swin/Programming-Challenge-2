@@ -67,7 +67,6 @@ namespace Task
                             }
                             Console.WriteLine("\n" + lineSeparator + "\n");   
                         }
-
                     break;
 
                     //Calculate average, total, list the rolls
