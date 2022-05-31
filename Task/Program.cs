@@ -9,8 +9,8 @@ namespace Task
     {
         static void Main(string[] args)
         {
-            int sumDiceRolls;
-            double diceRollsAverage;
+            //int sumDiceRolls;
+            //double diceRollsAverage;
             int diceRollsTotal;
 
             string menuSelection = "";
@@ -33,9 +33,9 @@ namespace Task
                     case "1":
                         while (rollAgain == "y" && Int32.Parse(numberDiceRolls) <= 50 && Int32.Parse(numberDiceRolls) >= 0) 
                         {
-                            Console.WriteLine("How many dice do you want to roll?");
+                            Console.WriteLine("How many dice do you want to roll?\n");
                             numberDiceRolls = Console.ReadLine();
-                            Console.WriteLine();
+                            Console.WriteLine(lineSeparator + "\n");
                             if (Int32.Parse(numberDiceRolls) > 50) 
                             {
                                 Console.WriteLine();
@@ -57,8 +57,8 @@ namespace Task
                             {
                                 Console.WriteLine(i);
                             }
-                            Console.WriteLine();
-                            Console.WriteLine("Delete previous rolls and roll again? (y/n)");
+                            Console.WriteLine("\n");
+                            Console.WriteLine("Would you like to roll again? (y/n)");
                             rollAgain = Console.ReadLine().ToLower();
                             if(rollAgain == "y")
                             {
@@ -67,7 +67,7 @@ namespace Task
                             {
                                 Console.WriteLine("\nSaving rolls");
                             }
-                            Console.WriteLine(lineSeparator + "\n");   
+                            Console.WriteLine("\n" + lineSeparator + "\n");   
                         }
 
                     break;
@@ -80,29 +80,27 @@ namespace Task
                         {
                             Console.WriteLine("A. Calculate average of rolls \nB. Calculate sum of rolls \nC. List all rolls \nD. Return to main menu \n");
                             caseTwoChoice = Console.ReadLine().ToUpper();
+                            Console.WriteLine(lineSeparator);
                             switch(caseTwoChoice)
                             {
                                 //Calculate average of rolls
                                 case "A":
-                                    diceRollsAverage = diceRolls.Average();
-                                    Console.WriteLine($"\nThe average of all rolls is {diceRollsAverage}\n {lineSeparator}\n");
-                                break;
+                                    Console.WriteLine();
+                                    DiceRollsAverage(diceRolls);
+                                    Console.WriteLine($"{lineSeparator}\n");
+                                    break;
 
                                 //Calculate sum of rolls
                                 case "B":
-                                    sumDiceRolls = diceRolls.Sum();
-                                    Console.WriteLine($"\nThe sum of all rolls is {sumDiceRolls}\n {lineSeparator}\n");
-                                break;
+                                    DiceRollsSum(diceRolls);
+                                    Console.WriteLine($"\n{lineSeparator}\n");
+                                    break;
 
                                 //List all rolls
                                 case "C":
-                                Console.WriteLine();
-                                    foreach(int i in diceRolls)
-                                    {
-                                        Console.Write($"{i} ");
-                                    }
-                                    Console.WriteLine($"\n{lineSeparator}\n");
-                                break;
+                                    PrintRolls(diceRolls);
+                                    Console.WriteLine($"\n\n{lineSeparator}\n");
+                                    break;
 
                                 //Return to main menu
                                 case "D":
@@ -132,14 +130,15 @@ namespace Task
                         {
                             diceRolls.Add((int)i);
                         }
+
                         diceRollsTotal = diceRolls.Count();
                         Console.WriteLine($"The total number of rolls is {diceRollsTotal}.");
 
-                        sumDiceRolls = diceRolls.Sum();
-                        Console.WriteLine($"\nThe sum of all rolls is {sumDiceRolls}.");
+                        DiceRollsSum(diceRolls);
+                        Console.WriteLine();
 
-                        diceRollsAverage = diceRolls.Average();
-                        Console.WriteLine($"\nThe average of all rolls is {diceRollsAverage}.\n {lineSeparator}\n");
+                        DiceRollsAverage(diceRolls);
+                        Console.Write($"{lineSeparator}\n");
                     break;
 
                     //Exit
@@ -148,6 +147,32 @@ namespace Task
                     break;
                 }
             }       
+        }
+
+        //Writes all numbers stored in the list diceRolls to the console
+        private static void PrintRolls(List<int> diceRolls)
+        {
+            Console.WriteLine();
+            foreach (int i in diceRolls)
+            {
+                Console.Write($"{i} ");
+            }
+        }
+
+        //Calculates the sum of all numbers stored in the list diceRolls and prints to console
+        private static int DiceRollsSum(List<int> diceRolls)
+        {
+            int sumDiceRolls = diceRolls.Sum();
+            Console.WriteLine($"\nThe sum of all rolls is {sumDiceRolls}");
+            return sumDiceRolls;
+        }
+
+        //Calculates the average of numbers stored in the list diceRolls and prints to console
+        private static double DiceRollsAverage(List<int> diceRolls)
+        {
+            double diceRollsAverage = diceRolls.Average();
+            Console.WriteLine($"The average of all rolls is {diceRollsAverage}\n");
+            return diceRollsAverage;
         }
     }
 }
