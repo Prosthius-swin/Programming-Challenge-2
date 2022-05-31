@@ -9,8 +9,6 @@ namespace Task
     {
         static void Main(string[] args)
         {
-            //int sumDiceRolls;
-            //double diceRollsAverage;
             int diceRollsTotal;
 
             string menuSelection = "";
