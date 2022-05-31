@@ -149,7 +149,7 @@ namespace Task
             }       
         }
 
-        //Writes all numbers stored in the list diceRolls to the console
+        //Writes all numbers stored in the list 'diceRolls' to the console
         private static void PrintRolls(List<int> diceRolls)
         {
             Console.WriteLine();
@@ -159,7 +159,7 @@ namespace Task
             }
         }
 
-        //Calculates the sum of all numbers stored in the list diceRolls and prints to console
+        //Calculates the sum of all numbers stored in the list 'diceRolls' and prints to console
         private static int DiceRollsSum(List<int> diceRolls)
         {
             int sumDiceRolls = diceRolls.Sum();
@@ -167,7 +167,7 @@ namespace Task
             return sumDiceRolls;
         }
 
-        //Calculates the average of numbers stored in the list diceRolls and prints to console
+        //Calculates the average of numbers stored in the list 'diceRolls' and prints to console
         private static double DiceRollsAverage(List<int> diceRolls)
         {
             double diceRollsAverage = diceRolls.Average();
