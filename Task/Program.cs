@@ -149,7 +149,7 @@ namespace Task
             }       
         }
 
-        //Writes all numbers stored in the list 'diceRolls' to the console
+        //Prints all numbers stored in the list 'diceRolls' to the console
         private static void PrintRolls(List<int> diceRolls)
         {
             Console.WriteLine();
